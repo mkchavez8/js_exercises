@@ -1,4 +1,6 @@
+// Variable that asks for user's input
 const playerSelection = prompt("Enter Selection");
+
 const computerSelection = getComputerChoice();
 
 // Function that returns a random answer for the computer
@@ -48,4 +50,30 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-console.log(playRound(playerSelection, computerSelection));
+// Function that plays 5 rounds and declares a winner
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        playRound(playerSelection, computerSelection);
+
+        if (playRound = 'You win') {
+            playerScore++;
+        }
+        else if (playRound = 'You lose') {
+            computerScore++;
+        }
+    }
+
+    if (playerScore > computerScore) {
+        return 'Player wins!';
+    }
+    else if (playerScore < computerScore) {
+        return 'Computer wins!';
+    }
+    else return 'No winner!';
+}
+
+console.log(game());
