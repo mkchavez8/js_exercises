@@ -4,8 +4,6 @@ const playerSelection = getPlayerChoice();
 // Variable that holds computer choice
 const computerSelection = getComputerChoice();
 
-console.log(playerSelection, computerSelection);
-
 // Function that asks for user's input
 function getPlayerChoice() {
     let input = prompt("Enter Rock, Paper, or Scissors");
@@ -29,30 +27,30 @@ function getComputerChoice () {
 }
 
 // Function that plays a round and returns result
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return 'Draw';
     }
-    else if (playerSelection == 'Rock' && computerSelection === 'Paper') {
+    else if (
+            (playerSelection === 'Rock' && computerSelection === 'Paper') || 
+            (playerSelection === 'Paper' && computerSelection === 'Scissors') || 
+            (playerSelection === 'Scissors' && computerSelection === 'Rock')) {
         return 'You lose';
-    }
-    else if (playerSelection == 'Rock' && computerSelection === 'Scissors') {
-        return 'You win';
-    }
-    else if (playerSelection == 'Paper' && computerSelection === 'Scissors') {
-        return 'You lose';
-    }
-    else if (playerSelection == 'Paper' && computerSelection === 'Rock') {
-        return 'You win';
-    }
-    else if (playerSelection == 'Scissors' && computerSelection === 'Rock') {
-        return 'You lose';
-    }
-    else if (playerSelection == 'Scissors' && computerSelection === 'Paper') {
-        return 'You win';
     }
     else if (playerSelection != 'Rock' || 'Paper' || 'Scissors') {
-        return 'Enter a valid input';
+        return 'Invalid input';
+    }
+    else {
+        return 'You win';
     }
 }
+
+function game() {
+    for(i = 0; i < 5; i++) {
+        playRound;
+    }
+}
+
+// Console.log stuff just to visualize
+console.log(playerSelection, computerSelection);
+console.log(playRound(playerSelection, computerSelection));
