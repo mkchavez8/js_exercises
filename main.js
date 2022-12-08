@@ -53,23 +53,30 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
     for(i = 0; i < 5; i++) {
-        playRound(); {
-            if (playRound(playerSelection, computerSelection) === 'You lose') {
+        let playerChoice = getPlayerChoice();
+        let computerChoice = getComputerChoice();
+        playRound(playerSelection, computerSelection); {
+            if (playRound(playerChoice, computerChoice) === 'You lose') {
                 computerScore++;
             }
-            else if (playRound(playerSelection, computerSelection) === 'You win') {
+            else if (playRound(playerChoice, computerChoice) === 'You win') {
                 playerScore++;
             }
+        console.log(playerChoice, computerChoice);
+        console.log(playRound(playerChoice, computerChoice));
         }
         console.log(playerScore, computerScore); 
     }
-    if (playerScore === 5) {
+    if (playerScore > computerScore) {
         return 'Player wins';
     }
-    else return 'Computer wins';
+    else if (playerScore < computerScore) {
+        return 'Computer wins';
+    }
+    else return 'Tie';
 }
 
 // Console.log stuff just to visualize
 console.log(playerSelection, computerSelection);
 console.log(playRound(playerSelection, computerSelection));
-console.log(game());
+console.log(game())
