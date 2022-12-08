@@ -37,20 +37,39 @@ function playRound(playerSelection, computerSelection) {
             (playerSelection === 'Scissors' && computerSelection === 'Rock')) {
         return 'You lose';
     }
-    else if (playerSelection != 'Rock' || 'Paper' || 'Scissors') {
-        return 'Invalid input';
-    }
-    else {
+    else if (
+        (playerSelection === 'Rock' && computerSelection === 'Scissors') || 
+        (playerSelection === 'Paper' && computerSelection === 'Rock') || 
+        (playerSelection === 'Scissors' && computerSelection === 'Paper')) 
+    {
         return 'You win';
+    }
+    else if (playerSelection !== 'Rock' || 'Paper' || 'Scissors') {
+        return 'Invalid input';
     }
 }
 
 function game() {
+    let playerScore = 0;
+    let computerScore = 0;
     for(i = 0; i < 5; i++) {
-        playRound;
+        playRound(); {
+            if (playRound(playerSelection, computerSelection) === 'You lose') {
+                computerScore++;
+            }
+            else if (playRound(playerSelection, computerSelection) === 'You win') {
+                playerScore++;
+            }
+        }
+        console.log(playerScore, computerScore); 
     }
+    if (playerScore === 5) {
+        return 'Player wins';
+    }
+    else return 'Computer wins';
 }
 
 // Console.log stuff just to visualize
 console.log(playerSelection, computerSelection);
 console.log(playRound(playerSelection, computerSelection));
+console.log(game());
