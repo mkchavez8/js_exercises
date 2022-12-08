@@ -77,6 +77,4 @@ function game() {
 }
 
 // Console.log stuff just to visualize
-console.log(playerSelection, computerSelection);
-console.log(playRound(playerSelection, computerSelection));
 console.log(game())
