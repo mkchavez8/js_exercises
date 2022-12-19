@@ -1,14 +1,12 @@
 // Variable that holds player choice
-const playerSelection = getPlayerChoice();
+const playerSelection = document.querySelectorAll('button');
+playerSelection.forEach((button) => 
+    button.addEventListener('click', () => {
+        playRound(button.className);
+    }));
 
 // Variable that holds computer choice
 const computerSelection = getComputerChoice();
-
-// Function that asks for user's input
-function getPlayerChoice() {
-    let input = prompt("Enter Rock, Paper, or Scissors");
-    return input;
-}
 
 // Function that returns a random answer for the computer
 function getComputerChoice () {
@@ -48,33 +46,3 @@ function playRound(playerSelection, computerSelection) {
         return 'Invalid input';
     }
 }
-
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for(i = 0; i < 5; i++) {
-        let playerChoice = getPlayerChoice();
-        let computerChoice = getComputerChoice();
-        playRound(playerSelection, computerSelection); {
-            if (playRound(playerChoice, computerChoice) === 'You lose') {
-                computerScore++;
-            }
-            else if (playRound(playerChoice, computerChoice) === 'You win') {
-                playerScore++;
-            }
-        console.log(playerChoice, computerChoice);
-        console.log(playRound(playerChoice, computerChoice));
-        }
-        console.log(playerScore, computerScore); 
-    }
-    if (playerScore > computerScore) {
-        return 'Player wins';
-    }
-    else if (playerScore < computerScore) {
-        return 'Computer wins';
-    }
-    else return 'Tie';
-}
-
-// Console.log stuff just to visualize
-console.log(game())
