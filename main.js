@@ -1,12 +1,13 @@
-// Variable that holds player choice
-const playerSelection = document.querySelectorAll('button');
-playerSelection.forEach((button) => 
-    button.addEventListener('click', () => {
-        playRound(button.className);
-    }));
+let playerScore = 0;
+let computerScore = 0;
 
-// Variable that holds computer choice
-const computerSelection = getComputerChoice();
+// Take player choice and callback playRound function
+const buttons = document.querySelectorAll('button')
+buttons.forEach(button => {
+    button.addEventListener('click', function () {
+        playRound(button.className);
+    });
+});
 
 // Function that returns a random answer for the computer
 function getComputerChoice () {
@@ -25,24 +26,45 @@ function getComputerChoice () {
 }
 
 // Function that plays a round and returns result
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+
+    let computerSelection = getComputerChoice();
+    let result = "";
+    const container = document.querySelector('.container');
+
     if (playerSelection === computerSelection) {
-        return 'Draw';
+        result = 'Draw';
     }
     else if (
             (playerSelection === 'Rock' && computerSelection === 'Paper') || 
             (playerSelection === 'Paper' && computerSelection === 'Scissors') || 
             (playerSelection === 'Scissors' && computerSelection === 'Rock')) {
-        return 'You lose';
+        result = 'You lose';
+        computerScore += 1;
+            
+            if (computerScore == 5) {
+                result = 'You lost the match';
+            }
     }
     else if (
         (playerSelection === 'Rock' && computerSelection === 'Scissors') || 
         (playerSelection === 'Paper' && computerSelection === 'Rock') || 
         (playerSelection === 'Scissors' && computerSelection === 'Paper')) 
     {
-        return 'You win';
+        result = 'You win';
+        playerScore += 1;
+
+            if (playerScore == 5) {
+                result = 'You won the match';
+            }
     }
     else if (playerSelection !== 'Rock' || 'Paper' || 'Scissors') {
-        return 'Invalid input';
+        result = 'Invalid input';
     }
+    
+    const returnResult = document.createElement('div');
+    returnResult.textContent = result + ' ' + playerScore + ' - ' + computerScore;
+    container.appendChild(returnResult);
+    return;
+
 }
