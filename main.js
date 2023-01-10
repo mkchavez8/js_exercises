@@ -1,17 +1,17 @@
 let playerScore = 0;
 let computerScore = 0;
 
-const buttons = document.querySelectorAll('button')
+const buttons = document.querySelectorAll('button');
 
 function disableButtons() {
     buttons.forEach(button => {
-        button.disabled = true
-    })
-}
+        button.disabled = true;
+    });
+};
 
 // Place each event listener (click) into the playRound function as playerSelection
 buttons.forEach(button => {
-    button.addEventListener('click', function () {
+    button.addEventListener('click', function() {
         playRound(button.className);
     });
 });
